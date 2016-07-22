@@ -1,0 +1,17 @@
+
+
+
+<% if @listings.present? %>
+  <%=  @listings%>
+<% else %>
+  <p>Couldn't find any matching results.</p>
+<% end %>
+
+
+
+<h1> <% @listings.each do |listing|%> </h1>
+<a href="/listings/<%=listing.id%>"><%=listing.name%></a><br>
+<p>Listed since <%=listing.created_at.strftime("%b %Y")%></p>
+
+	<%end%>
+<br>

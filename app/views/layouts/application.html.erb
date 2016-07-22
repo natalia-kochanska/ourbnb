@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= javascript_include_tag 'application' %>
+  <%= csrf_meta_tag %>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+
+
+  </head>
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <body>
+    <style>
+    h1, h2, h3, p, ul, a {color: #3B3738; font-family: Georgia;}
+    </style>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid" id="nav-new">
+    <style>
+    #nav-new {background-color:#FDF3E7!important;}
+    </style>
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="/">SpareBnB</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <% if signed_in? %>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Help<span class="sr-only">(current)</span></a></li>
+        <li><a href="#">Messages</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">My Stuff<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="/listings/new">Add a listing</a></li>
+            <li><a href="/users/<%=current_user.id%>/listings">My listings</a></li>
+            <li><a href="#">My reservations</a></li>
+            <li><a href="/users/<%=current_user.id%>/edit">Edit Profile</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Settings</a></li>
+          </ul>
+        </li>
+      </ul>
+        <% end %>
+<form class="navbar-form navbar-left" role="search" id="navBarSearchForm">
+  <style>
+          #navBarSearchForm input[type=text]{width:620px !important;
+          height: 34px;
+          border-radius: 4px; }
+        </style>
+  <div class="form-group" class="form-control">
+<%=  form_tag( listings_path, :method => "get") do %></div>
+<%= text_field_tag :search, params[:search], placeholder: "Search for places to stay" %>
+<%= submit_tag "Search" %>
+
+<% end %>
+</form>
+ 
+<form class="navbar-form navbar-left">
+      <!-- <ul class="navbar-form navbar-right pull-right"> -->
+        <div class="form-group">
+          <% if signed_in? %>
+       <a  class='avatar-image' href="/users/<%= current_user.id%>"><%= avatar_for(current_user, size: 38) %></a>
+       <style>
+.avatar-image {border-radius: 50%;}
+</style>
+      <button type="button" class="btn btn-default">
+      <%= link_to 'Sign out', sign_out_path, method: :delete %></button>
+    <% else %>
+    <button type="button" class="btn btn-default pull-right">
+      <%= link_to 'Sign in', sign_in_path %></button></p>
+    <% end %>
+        </div>
+        </form>
+     <!--  </ul> -->
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+  <div id="flash">
+    <% flash.each do |key, value| -%>
+      <div id="flash_<%= key %>"><%=h value %></div>
+    <% end %>
+  </div>
+
+  <%= yield %>
+</body>
+</html>

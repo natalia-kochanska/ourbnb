@@ -1,0 +1,9 @@
+
+<h1> <% @listings.each do |listing|%> </h1>
+<a href="/listings/<%=listing.id%>"><%=listing.name%></a><br>
+<p>Listed since <%=listing.created_at.strftime("%b %Y")%></p>
+<p><a href='/listings/<%=listing.id%>/edit'>Edit</a>
+<%= link_to "delete", listing_path(listing), method: :delete %></p>
+<br>
+	<%end%>
+<br>

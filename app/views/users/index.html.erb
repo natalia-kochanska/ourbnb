@@ -1,0 +1,14 @@
+
+<h1>Our hot picks this month</h1>
+<%= image_tag("photosrow.png")%>
+
+<div class="new_listings">
+<h1> Newest listings:</h1>
+
+<%@listings.each do |listing|%>
+<ul>
+<a href='/listings/<%=listing.id%>'><%=listing.name%></a> for <%=listing.price%> a night
+</ul>
+<%end %>
+<%= paginate @listings%>
+</div>

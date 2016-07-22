@@ -1,0 +1,6 @@
+
+<h1> <% @user.listings.all each do |listing|%> </h1>
+<%=listing.name%><br>
+<p>Listed since <%=listing.created_at.strftime("%b %Y")%></p>
+	<%end%>
+<br>

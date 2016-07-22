@@ -1,0 +1,37 @@
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  <h1>Create a new listing</h1>
+    <%= form_for(@listing) do |f| %>
+   
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control' %>
+      <br>
+      <%= f.label :address %>
+      <%= f.text_field :address, class: 'form-control' %>
+      <br>
+      <%= f.label :property_type %>
+      <%= f.text_field :property_type, class: 'form-control' %>
+      <br>
+      <%= f.label :description%>
+      <%= f.text_area :description, class: 'form-control' %>
+      <br>
+      <%= f.label :no_of_beds%>
+      <%= f.number_field :no_of_beds, class: 'form-control' %>
+      <br>
+      <%= f.label :price%>
+      <%= f.number_field :price, class: 'form-control' %>
+    
+      
+      <br>
+      <%= f.label :photo %>
+      <%= f.file_field :avatars, multiple: true %>
+      <br>
+      <br>
+      
+      <%= f.submit "Add", class: "btn btn-primary" %>
+    <% end %>
+    
+  </div>
+</div>

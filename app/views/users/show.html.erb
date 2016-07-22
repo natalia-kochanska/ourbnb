@@ -1,0 +1,21 @@
+<div class="page-header " id='hed1'>
+  <h1><%= avatar_for(@user, size: 100) %> Hey! I'm  <%= @user.name.capitalize if @user.name%></h1><h3><small>Member since <%=@user.created_at.strftime("%b %Y")%></small></h3>
+  </div>
+	<div id='stipe-top'>
+   </div>
+
+<br>
+<h2>About me:</h2>
+<%=@user.about%>
+<br>
+<br>
+<div id='stipe-mid'>
+   </div>
+<h3>Here are my listings: </h3>
+
+<%@user.listings.each do |listing|%>
+<ul>
+	<a href='/listings/<%=listing.id%>'><%=listing.name%></ul>
+	<%end%>
+	<div id='stipe-bottom'>
+   </div>

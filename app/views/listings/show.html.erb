@@ -1,0 +1,56 @@
+<% if @listing.user.id == current_user.id%>
+	<a href='/listings/<%=@listing.id%>/edit'>Edit</a>
+	<%= link_to "Delete", listing_path(@listing), method: :delete %>
+  <%else%>
+  
+  <a href='/reservations/new'>Make a reservation</a>
+<% end %>
+<br>
+
+
+<div class="image-div container">
+
+  <% if @listing.avatars?%>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+      <!-- Indicators -->
+      <ol class="carousel-indicators">
+        <%for i in 0..@listing.avatars.count - 1 %>
+          <li data-target="#myCarousel" data-slide-to="<%=i%>"></li>
+          <%end%>
+      </ol>
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner" role="listbox">
+      	
+        <% @listing.avatars.each_with_index do |avatar, index|%>
+          <div class="item <%= 'active' if index == 0%>" id='img'>
+            <%= image_tag (avatar.large.url) %>
+          </div>
+          
+          <%end%>
+      </div>
+      <!-- Left and right controls -->
+      <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+
+      <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  <%end%>
+</div>
+
+
+<h1><%=@listing.name%></h1>
+<p>Listed by <%= @listing.user.name%></p>
+<p>It's a <%= @listing.property_type%> with <%= @listing.no_of_beds%> bed(s)</p>
+<p>Location: <%= @listing.address%></p></p>
+	<h2><%=@listing.price%> per night</h2>
+<h2><%=@listing.description%></h2>
+
+<!-- 
+<%= image_tag @listing.avatars[0].large.url if @listing.avatars? %> -->
+

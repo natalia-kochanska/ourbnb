@@ -1,0 +1,21 @@
+// Place all the styles related to the listings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+h1{
+	position:relative; left:30px;
+}
+.new_listings {
+	position:relative; bottom:817px; left: 20px;
+}
+
+.carousel-inner>.item>img {
+	max-width:100%; 
+  max-height:100%;
+  margin:auto;
+}
+
+.carousel-control.left, .carousel-control.right {
+   background-image:none !important;
+   filter:none !important;
+}
