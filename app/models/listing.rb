@@ -6,7 +6,7 @@ class Listing < ActiveRecord::Base
 	# has_many :reservations, :dependent => :destroy
 
 	mount_uploaders :avatars, AvatarUploader
-
+	acts_as_taggable
 
 	def self.search(search)
 	  	where("description ILIKE ? || name ILIKE ? || address ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")

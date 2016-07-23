@@ -22,8 +22,10 @@
       <br>
       <%= f.label :price%>
       <%= f.number_field :price, class: 'form-control' %>
+      <br>
+      <%= f.label :tag_list, "Tags (separated by commas)"%>
+      <%= f.text_area :tag_list, class: 'form-control' %>
     
-      
       <br>
       <%= f.label :photo %>
       <%= f.file_field :avatars, multiple: true %>
