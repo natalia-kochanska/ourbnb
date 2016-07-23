@@ -61,8 +61,8 @@
           border-radius: 4px; }
         </style>
   <div class="form-group" class="form-control">
-<%=  form_tag( listings_path, :method => "get") do %></div>
-<%= text_field_tag :search, params[:search], placeholder: "Search for places to stay" %>
+<%=  form_tag( listings_path, :method => "get") do %>
+<%= text_field_tag :search, params[:search], placeholder: "Search for places to stay" %></div>
 <%= submit_tag "Search" %>
 
 <% end %>
