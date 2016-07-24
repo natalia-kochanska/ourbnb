@@ -2,8 +2,8 @@
 	<a href='/listings/<%=@listing.id%>/edit'>Edit</a>
 	<%= link_to "Delete", listing_path(@listing), method: :delete %>
   <%else%>
-  
-  <a href='/reservations/new'>Make a reservation</a>
+  <%=link_to "New Reservation", new_listing_reservation_path(@listing)   %>
+  <!-- <a href='/listings/<%=@listing.id%>/reservations/new'>Make a reservation</a> -->
 <% end %>
 <br>
 
@@ -50,7 +50,24 @@
 <p>Location: <%= @listing.address%></p></p>
 	<h2><%=@listing.price%> per night</h2>
 <h2><%=@listing.description%></h2>
+<br>
+<p>Comments:</p>
+<%@listing.comments.each do |c|%>
+<ul>
+  
+  '<%= c.comment %>' by <%= c.user.name%><br>
+  Rating: <%= c.rating %> 
+</ul>
+<%end%>
 
+<%=form_for [@listing, Comment.new] do |f|%>
+  <%=f.label :comment %>
+  <%=f.text_field :comment, class: 'form-control'%>
+  <%=f.label :rating %>
+  <%=f.number_field :rating, class: "form-control" %>
+  <%= f.submit "Add", class: "btn btn-primary" %>
+<% end %>
+<br>
 <!-- 
 <%= image_tag @listing.avatars[0].large.url if @listing.avatars? %> -->
 

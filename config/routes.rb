@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'reservations/index'
+  get 'comments/create'
 
-  get 'reservations/new'
+  get 'comments/destroy'
+
+  get 'reservations/index'
 
   get 'reservations/show'
 
@@ -23,19 +25,19 @@ Rails.application.routes.draw do
 
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-  resources :users #do
-  #   resources :reservations
-  # end
+  resources :users do
+    get 'reservations', on: :member
+  end
 
  
-  resources :listings #do
-  #   get 'reservations', on: :member
-  # end
-    
-
+  resources :listings do
+    resources :reservations
+    resources :comments
+  end
+  
 
   get '/users/:user_id/listings', to: "listings#my_listings", as: 'my_listings'
   
-  
+
 
 end

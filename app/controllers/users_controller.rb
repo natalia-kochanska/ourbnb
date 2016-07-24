@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+
+
   def index
 		@listings = Listing.order("created_at DESC").all.page(params[:page]).per(5)
 
@@ -11,7 +13,6 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
-		
 	end
 
 	def edit
@@ -27,8 +28,10 @@ class UsersController < ApplicationController
   		end        
 	end
 
+
 	private
-	 def user_params
+
+	def user_params
       params.require(:user).permit(:name, :surname, :password, :about, {avatars:[]})
     end
 end
