@@ -17,19 +17,19 @@ Rails.application.routes.draw do
 
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
-  resources :users #do
-  #   resources :reservations
-  # end
+  resources :users do
+    resources :reservations, only: [:show, :index, :destroy]
+  end
 
  
-  resources :listings #do
-  #   get 'reservations', on: :member
-  # end
-    
-
+  resources :listings do
+    resources :reservations
+    resources :comments
+  end
+  
 
   get '/users/:user_id/listings', to: "listings#my_listings", as: 'my_listings'
   
-  
+
 
 end

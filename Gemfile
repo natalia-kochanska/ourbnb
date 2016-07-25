@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'sprockets', '3.6.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use postgresql as the database for Active Record
@@ -38,6 +38,8 @@ gem 'mini_magick'
 gem 'kaminari'
 
 gem 'acts-as-taggable-on', '~> 3.4'
+
+gem 'validates_overlap'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

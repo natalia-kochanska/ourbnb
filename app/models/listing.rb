@@ -1,9 +1,8 @@
 class Listing < ActiveRecord::Base
 	belongs_to :user
-	# has_many :tags, through: :listing_tags
-	# has_many :listing_tags
-	# has_many :users, through: :reservations
-	# has_many :reservations, :dependent => :destroy
+	has_many :users, through: :reservations
+	has_many :reservations, :dependent => :destroy
+	has_many :comments
 
 	mount_uploaders :avatars, AvatarUploader
 	acts_as_taggable

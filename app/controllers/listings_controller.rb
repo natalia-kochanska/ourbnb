@@ -37,7 +37,7 @@ class ListingsController < ApplicationController
       end        
   end
 
-  def destroy #delete '/listings/:id' do
+  def destroy 
       @listing.destroy
       # redirect_to listings_path #this refers to all listings..
       redirect_to my_listings_path(current_user)
@@ -49,6 +49,7 @@ class ListingsController < ApplicationController
   
   def show
     @listing = Listing.find(params[:id])
+
   end
 
 

@@ -8,7 +8,9 @@
 <%@listings.each do |listing|%>
 <ul>
 <a href='/listings/<%=listing.id%>'><%=listing.name%></a> for <%=listing.price%> a night
+<p><i>Avg Rating: <%= listing.comments.average(:rating) %></p></i>
 </ul>
 <%end %>
 <%= paginate @listings%>
 </div>
+
