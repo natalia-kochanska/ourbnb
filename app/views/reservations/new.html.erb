@@ -2,8 +2,9 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
   	<h1>Make a reservation</h1>
-    <%= form_for [@listing, Reservation.new] do |f| %>
-   
+
+    <%= form_for [@listing, @reservation] do |f| %>
+
 
       <%= f.label :checkin %>
       <%= f.date_field :checkin, class: 'form-control' %>

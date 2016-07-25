@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   has_many :authentications, :dependent => :destroy
   has_many :listings
   has_many :reservations
-  has_many :listings, through: :reservation
   has_many :comments
 
 

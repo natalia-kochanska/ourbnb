@@ -1,2 +1,37 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+
+
+<h1>Your upcoming reservations:</h1>
+<%@reservations.each do |reservation|%>
+	<ul>
+		<% if reservation.checkin > DateTime.now%>
+	Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br>
+	Check-in date: <%=reservation.checkin%><br>
+	Nights: <%=reservation.nights%><br>
+	Total price: <%=reservation.listing.price * reservation.nights%>
+<br>
+  <%= link_to "Cancell reservation", user_reservation_path(current_user, reservation), method: :delete %>
+	<%end%>
+	<br>
+	</ul>
+<%end%>
+
+
+<h1>Your past reservations:</h1>
+<i> Don't forget to tell others about your stay at these properties!</i>
+<br>
+<br>
+<%@reservations.each do |reservation|%>
+	<ul>
+		<% if reservation.checkin < DateTime.now%>
+	Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br>
+	Check-in date: <%=reservation.checkin%><br>
+	Nights: <%=reservation.nights%><br>
+	Total price: <%=reservation.listing.price * reservation.nights%>
+	<%end%>
+	<br>
+	</ul>
+	<%end%>
+
+
+
+	

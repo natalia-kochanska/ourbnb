@@ -1,9 +1,5 @@
 class CommentsController < ApplicationController
 
-  def new
-    @comment = Comment.new
-  end
-
   def create
   	@listing = Listing.find(params[:listing_id])
   	@comment = @listing.comments.new(comment_params)
@@ -13,6 +9,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    redirect_to request.referer 
+
   end
 
   private

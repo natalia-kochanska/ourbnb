@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   <%= csrf_meta_tag %>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -46,7 +48,7 @@
           <ul class="dropdown-menu">
             <li><a href="/listings/new">Add a listing</a></li>
             <li><a href="/users/<%=current_user.id%>/listings">My listings</a></li>
-            <li><a href="#">My reservations</a></li>
+            <li><a href="/users/<%=current_user.id%>/reservations">My reservations</a></li>
             <li><a href="/users/<%=current_user.id%>/edit">Edit Profile</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Settings</a></li>
@@ -89,11 +91,11 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-  <div id="flash">
-    <% flash.each do |key, value| -%>
-      <div id="flash_<%= key %>"><%=h value %></div>
+  <div class="container">
+    <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-  </div>
+</div>
 
   <%= yield %>
 </body>

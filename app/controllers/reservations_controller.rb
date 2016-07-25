@@ -1,33 +1,41 @@
 class ReservationsController < ApplicationController
-	before_action :find_listing, only: [:new, :craete, :delete]
+	
 
   def index
-  	
+  	@reservations = Reservation.where(user_id: current_user).order('checkin ASC')
   end
 
   def new
+    @listing = Listing.find(params[:listing_id])
   	@reservation = Reservation.new
+    
   end
 
   def create
-    @reservation = Reservation.new
-  	@reservation = current_user.reservations.new(lisitng_id: find_listing, checkin: params[:checkinn], nights: params[:nights])
+    @listing = Listing.find(params[:listing_id])
+  	@reservation = @listing.reservations.new(reservation_params)
+    @reservation.user_id = current_user.id
   	if @reservation.save
+      flash[:success] = "Reservation has been made. You can check it below."
   		redirect_to listing_reservations_path(@listing)
-	else 
+	  else 
 	  	render :new
-	end
+	  end
   end
 
   def show
   end
 
-  def delete
+  def destroy
+    @reservation = Reservation.find(params[:id])
+    @reservation.destroy
+    flash[:warning] = "Reservation has been cancelled"
+    redirect_to user_reservations_path(current_user)
   end
 
   private
 
-  def find_listing
-    @this_listing = Listing.find(params[:listing_id])
-  end 
+  def reservation_params
+      params.require(:reservation).permit(:checkin, :nights)
+  end
 end

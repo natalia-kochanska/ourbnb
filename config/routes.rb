@@ -1,13 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'comments/create'
-
-  get 'comments/destroy'
-
-  get 'reservations/index'
-
-  get 'reservations/show'
-
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
   resource :session, controller: "clearance/sessions", only: [:create]
 
@@ -26,7 +18,7 @@ Rails.application.routes.draw do
 
   get "/auth/:provider/callback" => "sessions#create_from_omniauth"
   resources :users do
-    get 'reservations', on: :member
+    resources :reservations, only: [:show, :index, :destroy]
   end
 
  
