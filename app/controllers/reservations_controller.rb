@@ -15,10 +15,12 @@ class ReservationsController < ApplicationController
     @listing = Listing.find(params[:listing_id])
   	@reservation = @listing.reservations.new(reservation_params)
     @reservation.user_id = current_user.id
+    @reservation.nights = @reservation.checkout - @reservation.checkin
   	if @reservation.save
       flash[:success] = "Reservation has been made. You can check it below."
   		redirect_to listing_reservations_path(@listing)
 	  else 
+      flash[:danger] = "The reservation hasn't been made. Try choosing different dates."
 	  	render :new
 	  end
   end
@@ -36,6 +38,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservation_params
-      params.require(:reservation).permit(:checkin, :nights)
+      params.require(:reservation).permit(:checkin, :checkout)
   end
 end
