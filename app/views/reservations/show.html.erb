@@ -1,2 +1,28 @@
-<h1>Your new reservation</h1>
-<%=@reservation.checkin%>
+<h1>All upcoming reservations for this listing:</h1>
+<% @reservations.each do |r| %>
+	<% if r.checkin > DateTime.now%>
+	<ul>
+		Reservation no.: <%= r.id%><br>
+		Guest's name: <%= r.user.name %><br>
+		Guest's e-mail: <%= r.user.email %><br>
+		Check-in: <%= r.checkin %><br>
+		Check-out: <%= r.checkout %><br>
+		Total paid: $<%=r.listing.price * r.nights%><br>
+	</ul>
+		<br>
+	<% end %>
+<% end %>
+
+<h1>Past reservations for this listing:</h1>
+<% @reservations.each do |r| %>
+	<% if r.checkin < DateTime.now%>
+	<ul>
+		Guest's name: <%= r.user.name %><br>
+		Guest's e-mail: <%= r.user.email %><br>
+		Check-in: <%= r.checkin %><br>
+		Check-out: <%= r.checkout %><br>
+		Total paid: $<%=r.listing.price * r.nights%><br>
+		<br>
+	</ul>
+	<% end %>
+<% end %>
