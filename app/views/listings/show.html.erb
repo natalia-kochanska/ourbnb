@@ -46,6 +46,7 @@
 <% if @listing.user.id == current_user.id%>
   <a href='/listings/<%=@listing.id%>/edit'>Edit</a>
   <%= link_to "Delete", listing_path(@listing), method: :delete %>
+  <a href='/listings/<%=@listing.id%>/reservations/show'>View all reservations</a>
   <%else%>
 <button type="button" class="btn btn-default" id="reservation_button">
 <a href='/listings/<%=@listing.id%>/reservations/new'>Make a reservation</a> </button>

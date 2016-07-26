@@ -1,10 +1,29 @@
 
 <h1> <% @listings.each do |listing|%> </h1>
-<a href="/listings/<%=listing.id%>"><%=listing.name%></a><br>
-<p>Listed since <%=listing.created_at.strftime("%b %Y")%></p>
-<p><i>Tags: <%=listing.tag_list%></i></p>
-<p><a href='/listings/<%=listing.id%>/edit'>Edit</a>
-<%= link_to "Delete", listing_path(listing), method: :delete %></p>
-<br>
-	<%end%>
+	<div class='container'>
+	<a href="/listings/<%=listing.id%>"><%=listing.name%></a><br>
+	<p>Listed since <%=listing.created_at.strftime("%b %Y")%></p>
+	<p><i>Tags: <%=listing.tag_list%></i></p>
+	<p><a href='/listings/<%=listing.id%>/edit'>Edit</a>
+	<%= link_to "Delete", listing_path(listing), method: :delete %></p>
+	<br>
+	<br> 
+	<p>All upcoming reservations for this listing:</p>
+		<% listing.reservations.each do |r| %>
+
+			<% if r.checkin > DateTime.now%>
+			<ul>
+			Reservation no.: <%= r.id%><br>
+			Guest's name: <%= r.user.name %><br>
+			Guest's e-mail: <%= r.user.email %><br>
+			Check-in: <%= r.checkin %><br>
+			Check-out: <%= r.checkout %><br>
+			Total paid: $<%=r.listing.price * r.nights%><br>
+		</ul>
+			<br>
+		<% end %>
+
+	<% end %>
+	</div>
+<%end%>
 <br>
