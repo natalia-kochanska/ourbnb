@@ -1,8 +1,64 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#photo {
+    
+}
+#for {
+    line-height: 1px;
+
+}
+
+.price {
+    font-family: "Impact";
+    padding-left: 20px;
+    font-size: 220%;
+    
+}
+.price2 {
+    padding-left: 50px;
+    font-size: 190%;
+    
+}
 
 
+#title{
+    font-size: 40px;
+    font-family: "Times New Roman";
+}
+
+
+
+#empty {
+    width: 400px;
+
+}
+th {
+    border: 1px solid black;
+}
+
+#vertical {
+    margin: 20px;
+    width: 2px;
+    height: 100px;
+    background-color: #FCDDB8;
+}
+
+.navbar-brand{
+    font-family: "Trebuchet MS";
+}
+
+#t_index {
+    border: 1px;
+    text-align: left;
+    padding: 5px;
+}
+
+#across{
+    height: 1px;
+    background-color: rgb(220, 220, 220);
+    ;
+}
 
     #hed1 {border: none;}
     #stipe-top {background-color: #FCDDB8; height: 5px;}

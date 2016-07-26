@@ -16,16 +16,24 @@ class ReservationsController < ApplicationController
   	@reservation = @listing.reservations.new(reservation_params)
     @reservation.user_id = current_user.id
     @reservation.nights = @reservation.checkout - @reservation.checkin
-  	if @reservation.save
-      flash[:success] = "Reservation has been made. You can check it below."
-  		redirect_to listing_reservations_path(@listing)
-	  else 
-      flash[:danger] = "The reservation hasn't been made. Try choosing different dates."
-	  	render :new
-	  end
+    respond_to do |format|
+    	if @reservation.save
+        HardWorker.perform_async(@reservation)
+        
+        flash[:success] = "Reservation has been made. You can check it below."
+    		format.html { redirect_to listing_reservations_path(@listing) }
+        format.json { render :show, status: :created, location: @reservation }
+  	  else 
+        flash[:danger] = "The reservation hasn't been made. Try choosing different dates."
+  	  	format.html { render :new }
+        format.json { render json: @reservation.errors, status: :unprocessable_entity }
+  	  end
+    end
   end
 
   def show
+    @listing = Listing.find(params[:listing_id])
+    @reservations = @listing.reservations.all.order('checkin ASC')
   end
 
   def destroy
