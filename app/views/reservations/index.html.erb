@@ -8,6 +8,9 @@
 	Check-in date: <%=reservation.checkin%><br>
 	Nights: <%=reservation.nights%><br>
 	Total price: <%=reservation.listing.price * reservation.nights%>
+	
+		<%= link_to 'Pay Now', new_payment_path + "?id=" + reservation.id.to_s %>
+
 <br>
   <%= link_to "Cancell reservation", user_reservation_path(current_user, reservation), method: :delete %>
 	<%end%>

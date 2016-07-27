@@ -1,12 +1,14 @@
+
 <div class="page-header " id='hed1'>
-  <h1><%= avatar_for(@user, size: 100) %> Hey! I'm  <%= @user.name.capitalize if @user.name%></h1><h3><small>Member since <%=@user.created_at.strftime("%b %Y")%></small></h3>
+  <h1><%= avatar_for(@user, size: 100) %> Hey! I'm  <%= @user.name.capitalize if @user.name%></h1>
+  <h3><small>Member since <%=@user.created_at.strftime("%b %Y")%></small></h3>
   </div>
+  <div class=container>
 	<div id='stipe-top'>
    </div>
 
 <br>
-<h2>About me:</h2>
-<%=@user.about%>
+<h3><%=@user.about%></h3>
 <br>
 <br>
 <div id='stipe-mid'>
@@ -18,4 +20,6 @@
 	<a href='/listings/<%=listing.id%>'><%=listing.name%></ul>
 	<%end%>
 	<div id='stipe-bottom'>
+   </div>
+
    </div>

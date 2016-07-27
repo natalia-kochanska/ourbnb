@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'payments/new'
+
   get 'transactions/new'
 
   resources :passwords, controller: "clearance/passwords", only: [:create, :new]
@@ -28,6 +30,8 @@ Rails.application.routes.draw do
     resources :reservations
     resources :comments
   end
+
+  resources :payments, only: [:new, :create]
   
 
   get '/users/:user_id/listings', to: "listings#my_listings", as: 'my_listings'

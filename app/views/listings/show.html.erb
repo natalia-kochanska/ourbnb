@@ -34,44 +34,65 @@
     </div>
   <%end%>
 </div>
+<table width='100%'>
+  <tr>
+    <td><div class='listing_title'><%=@listing.name%></div></td>
+    <td rowspan="2"  ><p><span class='price3'>$<%=@listing.price%></span><i>/night</td></p></i>
+    <td rowspan="2" >
+    <% if @listing.user.id == current_user.id%>
+      <a href='/listings/<%=@listing.id%>/edit'>Edit</a><br>
+      <%= link_to "Delete", listing_path(@listing), method: :delete %><br>
+      <a href='/listings/<%=@listing.id%>/reservations/show'>View all reservations</a>
+    <%else%>
+      <button type="button" class="btn btn-default" id="reservation_button">
+      <a href='/listings/<%=@listing.id%>/reservations/new'>Make a reservation</a> </button>
+    <% end %>
+  </td>
+  </tr>
+  <tr>
+    <td><div id='under_title'><p><i>Listed by <%= @listing.user.name%></p></i></div></td>
+  </tr>
+ 
+  
+</table>
 
-
-<h1><%=@listing.name%></h1>
-<p>Listed by <%= @listing.user.name%></p>
-<p>It's a <%= @listing.property_type%> with <%= @listing.no_of_beds%> bed(s)</p>
+<div class='container'><div id='horisont_stripe'></div>
+<br>
+<div class='container'>
+<p id="description"><%=@listing.description%></p>
+<div id='horisont_stripe2'></div>
+<p>Property type: <%= @listing.property_type%> </p>
 <p>Location: <%= @listing.address%></p></p>
-	<h2><%=@listing.price%> per night</h2>
-<h2><%=@listing.description%></h2>
+	
+</div>
 <br>
-<% if @listing.user.id == current_user.id%>
-  <a href='/listings/<%=@listing.id%>/edit'>Edit</a>
-  <%= link_to "Delete", listing_path(@listing), method: :delete %>
-  <a href='/listings/<%=@listing.id%>/reservations/show'>View all reservations</a>
-  <%else%>
-<button type="button" class="btn btn-default" id="reservation_button">
-<a href='/listings/<%=@listing.id%>/reservations/new'>Make a reservation</a> </button>
-<% end %>
-<br>
+
+<div class='container'><div id='horisont_stripe'></div>
 <br>
 <p>Comments:</p>
 <%@listing.comments.each do |c|%>
-<br>
+  <div class='comment_container'>
   <i>'<%= c.comment %>' by <%= c.user.name%></i><br>
   Rating: <%= c.rating %> 
   <% if c.user.id == current_user.id%>
-  <%= link_to "Delete comment", listing_comment_path(@listing, c), method: :delete %>
-<br>
-<br>
-<%end%>
+    <%= link_to " ~Delete comment~", listing_comment_path(@listing, c), method: :delete %>
+  <%end%>
+
+  </div>
+  <br>
 <% end %>
+<br>
 <div class="container">
 <%=form_for [@listing, Comment.new] do |f|%>
   <%=f.label :comment %>
   <%=f.text_area :comment, class: 'form-control'%>
   <%=f.label :rating %>
   <%=f.number_field :rating, min: 1, max: 5, class: "form-control" %>
+  <br>
   <%= f.submit "Add", class: "btn btn-primary" %>
 <% end %>
+</div>
+<br>
 </div>
 <br>
 <!-- 
