@@ -2,39 +2,56 @@
 
 <h1>Your upcoming reservations:</h1>
 <%@reservations.each do |reservation|%>
-	<div class="container>"
+	<div class="container3">
 		<% if reservation.checkin > DateTime.now%>
-	Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br>
-	Check-in date: <%=reservation.checkin%><br>
-	Nights: <%=reservation.nights%><br>
-	Total price: <%=reservation.price%><br>
-	<% if reservation.payments.find_by(reservation_id: reservation.id) == nil %>
-		<%= link_to 'Pay Now', new_payment_path(reservation_id: reservation.id)%>
-	<%else%>
-		~Payment has been made~
-	<%end%>
-<br>
-  <%= link_to "Cancell reservation", user_reservation_path(current_user, reservation), method: :delete %>
-	<%end%>
-	<br>
+			<table   width='100%'>
+			<tr>
+				<td>Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br></td>
+				
+					<br>
+	  			<td><%= link_to "Cancell reservation", user_reservation_path(current_user, reservation), method: :delete %></td>
+	  		</tr>
+	  		<tr>
+				<td>Check-in date: <%=reservation.checkin%><br></td>
+			</tr>
+			<tr>
+				<td>Check-out date: <%=reservation.checkout%><br></td>
+			</tr>
+			<tr>
+				<td>Nights: <%=reservation.nights%><br></td>
+			</tr>
+			<tr>
+				<td>Total price: $<%=reservation.price%><br></td>
+				<td ><% if reservation.payments.find_by(reservation_id: reservation.id) == nil %>
+					<button type="button" class="btn btn-default">
+					<%= link_to 'Pay Now', new_payment_path(reservation_id: reservation.id)%></button>
+				<%else%>
+					~Payment has been made~
+				<%end%></td>
+			</tr>
+			</table>
+		<%end%>
+		<br>
 	</div>
+</div>
 <%end%>
 
-
 <h1>Your past reservations:</h1>
+<div class="container">
 <i> Don't forget to tell others about your stay at these properties!</i>
 <br>
 <br>
 <%@reservations.each do |reservation|%>
-	<ul>
+	
 		<% if reservation.checkin < DateTime.now%>
 	Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br>
 	Check-in date: <%=reservation.checkin%><br>
 	Nights: <%=reservation.nights%><br>
-	Total price: <%=reservation.listing.price * reservation.nights%>
+	Total price: $<%=reservation.price%>
 	<%end%>
 	<br>
-	</ul>
+	
+	</div>
 	<%end%>
 
 
