@@ -26,12 +26,14 @@
 			<br>
 			<p><i>Avg Rating:<br>
 			</i><span class='price2'> <%= listing.comments.average(:rating) %></span>/5.0</p></td>
-<div id='across'></div>
+		<div id='across'></div>
 </table>
 </div>
 <%end %>
 <br>
+
 <%= paginate @listings%>
+
 </div>
 
 

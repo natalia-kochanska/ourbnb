@@ -1,29 +1,51 @@
 
-<h1> <% @listings.each do |listing|%> </h1>
-	<div class='container'>
-	<a href="/listings/<%=listing.id%>"><%=listing.name%></a><br>
-	<p>Listed since <%=listing.created_at.strftime("%b %Y")%></p>
-	<p><i>Tags: <%=listing.tag_list%></i></p>
+<%@listings.each do |listing|%>
+	<div class='container' id='listimg_main_page'>
+		<table id='t_index' style="width:100%">
+				<td> <%if listing.avatars?%>
+						<%= image_tag listing.avatars[0].medium.url  %>
+					<%else%>
+						<div id='empty'></div>
+					<%end%>
+				</td>
+
+				<td width="35%"><%=listing.name%></a> <br>
+					<i><p><%=listing.description%></i></p><br>
+					<p><i>Tags: <%=listing.tag_list%></i></p><br>
+				</td>
+				<td><div id='vertical'></div></td>
+				<td width="15%"> <br><i id='for'>for</i><br> <span class='price'>$<%=listing.price%></span> /night<br>
+					<br>
+					<p><i>Avg Rating:<br>
+					</i><span class='price2'> <%= listing.comments.average(:rating) %></span>/5.0</p>
+				</td>
+		<div id='across'></div>
+		</table>
+
+
+
+
 	<p><a href='/listings/<%=listing.id%>/edit'>Edit</a>
 	<%= link_to "Delete", listing_path(listing), method: :delete %></p>
+
 	<br>
 	<br> 
 	<p>All upcoming reservations for this listing:</p>
 		<% listing.reservations.each do |r| %>
 
 			<% if r.checkin > DateTime.now%>
-			<ul>
-			Reservation no.: <%= r.id%><br>
-			Guest's name: <%= r.user.name %><br>
-			Guest's e-mail: <%= r.user.email %><br>
-			Check-in: <%= r.checkin %><br>
-			Check-out: <%= r.checkout %><br>
-			Total paid: $<%=r.listing.price * r.nights%><br>
-		</ul>
-			<br>
+				<ul>
+				Reservation no.: <%= r.id%><br>
+				Guest's name: <%= r.user.name %><br>
+				Guest's e-mail: <%= r.user.email %><br>
+				Check-in: <%= r.checkin %><br>
+				Check-out: <%= r.checkout %><br>
+				Total paid: $<%=r.listing.price * r.nights%><br>
+				</ul>
+				<br>
 		<% end %>
-
+	<%end %>
 	<% end %>
 	</div>
-<%end%>
+
 <br>

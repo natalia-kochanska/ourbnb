@@ -1,18 +1,32 @@
-<h1>Your booking:</h1>
+<div class='container' width="100%">
+<h2>Your booking details:</h2>
+
+<table>
+  <tr>
+  <td width="35%">
+
+  <div class="field">
+    <h2>Check-in:</h2>
+    <h3><%= @reservation.checkin %></h3><br>
+  </div>
+</td>
+
+<td width="35%">
+  <div class="field">
+    <h2>Check-out:</h2>
+    <h3><%= @reservation.checkout %></h3><br>
+  </div>
+</td>
 
 
+<td>
   <div class="field">
-    <h1>check in</h1>
-    <%= @reservation.checkin %><br>
+    <h2>Total to pay:</h2>
+    <h3>$<%= @reservation.price %></h3><br>
   </div>
-  <div class="field">
-    <h1>check out</h1>
-    <%= @reservation.checkout %><br>
-  </div>
-  <div class="field">
-    <h1>Total to pay:</h1>
-    <%= @reservation.price %><br>
-  </div>
+</td>
+</tr>
+</table>
   
 
   <%= form_tag payments_path do%>
@@ -25,7 +39,7 @@
   <div class="actions">
     <%= submit_tag "Pay Now" %>
   </div>
-
+</div>
 <% end %>
 
 

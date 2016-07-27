@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
 
   def index
-		@listings = Listing.order("created_at DESC").all.page(params[:page]).per(5)
+		@listings = Listing.order("created_at DESC").all.page(params[:page]).per(10)
 
 	end
 	

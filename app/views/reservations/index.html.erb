@@ -36,23 +36,28 @@
 </div>
 <%end%>
 
+
 <h1>Your past reservations:</h1>
 <div class="container">
-<i> Don't forget to tell others about your stay at these properties!</i>
-<br>
-<br>
-<%@reservations.each do |reservation|%>
-	
-		<% if reservation.checkin < DateTime.now%>
-	Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br>
-	Check-in date: <%=reservation.checkin%><br>
-	Nights: <%=reservation.nights%><br>
-	Total price: $<%=reservation.price%>
-	<%end%>
+	<i> Don't forget to tell others about your stay at these properties!</i>
 	<br>
-	
-	</div>
+	<br>
+	<%@reservations.each do |reservation|%>
+		
+		<% if reservation.checkin < DateTime.now%>
+			<p>Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br>
+			Check-in date: <%=reservation.checkin%><br>
+			Nights: <%=reservation.nights%><br>
+			Total price: $<%=reservation.price%></p>
+			<div id='horisont_stripe2'></div>
+		<%end%>
+		<br>
 	<%end%>
+
+	<br>
+</div>
+<%= paginate @reservations%>
+
 
 
 

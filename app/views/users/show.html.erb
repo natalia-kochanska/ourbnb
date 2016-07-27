@@ -4,15 +4,13 @@
   <h3><small>Member since <%=@user.created_at.strftime("%b %Y")%></small></h3>
   </div>
   <div class=container>
-	<div id='stipe-top'>
-   </div>
+	<div id='stipe-top'></div>
 
 <br>
 <h3><%=@user.about%></h3>
 <br>
 <br>
-<div id='stipe-mid'>
-   </div>
+<div id='stipe-mid'></div>
 <h3>Here are my listings: </h3>
 
 <%@user.listings.each do |listing|%>
