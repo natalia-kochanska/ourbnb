@@ -59,41 +59,40 @@
         </li>
       </ul>
         <% end %>
-<form class="navbar-form navbar-left" role="search" id="navBarSearchForm">
-  <style>
+        <style>
           #navBarSearchForm input[type=text]{width:620px !important;
           height: 34px;
           border-radius: 4px; }
         </style>
   <div class="form-group" class="form-control">
-<%=  form_tag( listings_path, :method => "get") do %>
-<%= text_field_tag :search, params[:search], placeholder: "Search for places to stay" %></div>
-<%= submit_tag "Search" %>
-
-<% end %>
-</form>
+<%= form_tag(listings_path , :method => "get", class: "navbar-form navbar-left", role: "search", id: "navBarSearchForm")%>
+  <%= text_field_tag :search, params[:search], placeholder: "Search for places to stay" %>
+  <%= submit_tag "Search" %>
+</div>
  
 <form class="navbar-form navbar-left">
-      <!-- <ul class="navbar-form navbar-right pull-right"> -->
-        <div class="form-group">
+        <div class="signin">
+
           <% if signed_in? %>
-       <a  class='avatar-image' href="/users/<%= current_user.id%>"><%= avatar_for(current_user, size: 38) %></a>
-       <style>
-.avatar-image {border-radius: 50%;}
-</style>
-      <button type="button" class="btn btn-default">
+          <button type="button" class="btn btn-default pull-right">
       <%= link_to 'Sign out', sign_out_path, method: :delete %></button>
+       <a  class='avatar-image pull-right' href="/users/<%= current_user.id%>"><%=current_user.name%> <%= avatar_for(current_user, size: 38) %></a>
+       <style>
+.avatar-image {border-radius: 50%; margin-right: 7px;}
+</style>
+
     <% else %>
     <button type="button" class="btn btn-default pull-right">
-      <%= link_to 'Sign in', sign_in_path %></button></p>
+      <%= link_to 'Sign in', sign_in_path %></button>
     <% end %>
         </div>
         </form>
-     <!--  </ul> -->
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
+<style>
+ .signin { position:relative; bottom:8px;}
+ </style>
   <div class="container">
     <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>"><%= value %></div>

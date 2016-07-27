@@ -1,4 +1,9 @@
+require 'elasticsearch/model'
+
 class Listing < ActiveRecord::Base
+	include Elasticsearch::Model
+  	include Elasticsearch::Model::Callbacks
+
 	belongs_to :user
 	has_many :users, through: :reservations
 	has_many :reservations, :dependent => :destroy
@@ -6,8 +11,5 @@ class Listing < ActiveRecord::Base
 
 	mount_uploaders :avatars, AvatarUploader
 	acts_as_taggable
-
-	def self.search(search)
-	  	where("description ILIKE ? || name ILIKE ? || address ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
-	end
 end
+
