@@ -1,15 +1,16 @@
 class ListingsController < ApplicationController
-  before_action :set_listing, only: [:show, :edit, :update, :destroy, :index]
+  before_action :set_listing, only: [:show, :edit, :update, :destroy]
   before_action :require_login, only: [:edit, :update, :new, :create, :destroy]
 
 
   def index
-    @listings = Listing.all
-     if params[:search]
-        @listings = Listing.search(params[:search]).order("created_at DESC")
-      else
-        @listings = Listing.all.order('created_at DESC')
-      end
+    Listing.import
+    if params[:search].present?
+      @listings = Listing.search(params[:search]).records
+    else
+      @listings = Listing.all.order('created_at DESC')
+    end
+     
   end
 
   def new
