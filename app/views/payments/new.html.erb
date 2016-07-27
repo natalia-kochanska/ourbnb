@@ -1,0 +1,45 @@
+<h1>Your booking:</h1>
+
+
+  <div class="field">
+    <h1>check in</h1>
+    <%= @reservation.checkin %><br>
+  </div>
+  <div class="field">
+    <h1>check out</h1>
+    <%= @reservation.checkout %><br>
+  </div>
+  <div class="field">
+    <h1>Total to pay:</h1>
+    <%= @reservation.price %><br>
+  </div>
+  
+
+  <%= form_tag payments_path do%>
+  <div class="field">
+    <%= hidden_field_tag(:reservation_id, @reservation.id) %><br>
+  </div>
+  <div class="field">
+  <div id="dropin"></div>
+  </div>
+  <div class="actions">
+    <%= submit_tag "Pay Now" %>
+  </div>
+
+<% end %>
+
+
+<script type="text/javascript">
+  function setupBT() {
+    braintree.setup("<%= @client_token %>", 'dropin', {
+      container: 'dropin'
+    });
+  }
+
+  if (window.addEventListener)
+    window.addEventListener("load", setupBT, false);
+  else if (window.attachEvent)
+    window.attachEvent("onload", setupBT);
+  else window.onload = setupBT;
+
+</script>

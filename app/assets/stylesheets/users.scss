@@ -1,9 +1,7 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-#photo {
-    
+h3{
+    position:relative; left:40px;
 }
+
 #for {
     line-height: 1px;
 
@@ -61,9 +59,9 @@ th {
 }
 
     #hed1 {border: none;}
-    #stipe-top {background-color: #FCDDB8; height: 5px;}
-    #stipe-mid {background-color: #FCC179; height: 7px;}
-    #stipe-bottom {background-color: #FAA53E; height: 9px;}
+    #stipe-top {background-color: #FCDDB8; height: 5px; border-radius: 20px;}
+    #stipe-mid {background-color: #FCC179; height: 7px;border-radius: 20px;}
+    #stipe-bottom {background-color: #FAA53E; height: 9px;border-radius: 20px;}
 
 
 #login-dp{

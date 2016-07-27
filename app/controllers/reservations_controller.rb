@@ -16,10 +16,10 @@ class ReservationsController < ApplicationController
   	@reservation = @listing.reservations.new(reservation_params)
     @reservation.user_id = current_user.id
     @reservation.nights = @reservation.checkout - @reservation.checkin
+    @reservation.price = @reservation.listing.price * @reservation.nights
     respond_to do |format|
     	if @reservation.save
-        HardWorker.perform_async(@reservation)
-        
+        ReservationMailer.delay.reservation_email(@reservation.user, @reservation.listing.user, @reservation.listing.id)
         flash[:success] = "Reservation has been made. You can check it below."
     		format.html { redirect_to listing_reservations_path(@listing) }
         format.json { render :show, status: :created, location: @reservation }

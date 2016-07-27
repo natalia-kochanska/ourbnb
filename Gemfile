@@ -30,6 +30,9 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 # Use Unicorn as the app server
 # gem 'unicorn'
+gem 'braintree'
+gem 'gon'
+
 gem 'figaro'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

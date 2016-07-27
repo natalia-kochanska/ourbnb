@@ -1,11 +1,32 @@
-// Place all the styles related to the listings controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
 h1{
 	position:relative; left:30px;
 }
 
+#description{
+	font-size: 25px;
+	color: #606A6E;
+}
+
+#horisont_stripe2 {
+	height:1px;
+	width:200px;
+	background-color: #FCDDB8;
+
+}
+
+#horisont_stripe{
+	height:2px;
+	background-color: #FCDDB8;
+}
+#under_title{
+	position:relative; left:200px;
+}
+
+.listing_title{
+	font-family: "Georgia";
+	position:relative; left:30px;
+	font-size: 50px;
+}
 
 .carousel-inner>.item>img {
 	max-width:100%; 
@@ -19,5 +40,22 @@ h1{
 }
 
 #reservation_button {
-	background: #CEF72A;
+	background: white;
+	
+	border-color: red;
+
+}
+
+.comment_container{
+	background-color: #F0F0F0;
+	padding: 5px;
+	border-radius: 5px;
+	box-shadow: 5px 5px 5px #888888;
+}
+
+.price3{
+
+	font-size: 50px;
+	text-align: left;
+	font-family: "Georgia";
 }
