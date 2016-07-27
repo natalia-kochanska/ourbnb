@@ -2,25 +2,27 @@ class PaymentsController < ApplicationController
 	# before_action :authenticate_user!
 
   def new
-  	byebug
     @client_token = Braintree::ClientToken.generate
-    @reservation = Reservation.find(params[:id])
-
+    @reservation = Reservation.find(params[:reservation_id])
     @payment = Payment.new
   end
 
   def create
-  	@reservation = Reservation.find(params[:payment][:reservation_id])
-    nonce = params[:payment_method_nonce]
-    render action: :new and return unless nonce
-    result = Braintree::Transaction.sale(
-      amount: "10.00",
+  	@reservation = Reservation.find(params[:reservation_id])
+    @result = Braintree::Transaction.sale(
+      amount: @reservation.price,
       payment_method_nonce: params[:payment_method_nonce]
     )
 
-    # reserve to save the transaction details into database
-
-    redirect_to listing_reservations_path
+    if @result.success?  
+      transaction_id = @result.transaction.id
+      @reservation.payments.create(transaction_id: transaction_id, reservation_id: params[:id])
+      flash[:success] = "Successful payment"
+      redirect_to root_path
+    else 
+      flash[:danger] = "Transaction hasn't been processed"
+      redirect_to root_path
+    end
   end
 
 end

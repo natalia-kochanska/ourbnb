@@ -2,20 +2,22 @@
 
 <h1>Your upcoming reservations:</h1>
 <%@reservations.each do |reservation|%>
-	<ul>
+	<div class="container>"
 		<% if reservation.checkin > DateTime.now%>
 	Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br>
 	Check-in date: <%=reservation.checkin%><br>
 	Nights: <%=reservation.nights%><br>
-	Total price: <%=reservation.listing.price * reservation.nights%>
-	
-		<%= link_to 'Pay Now', new_payment_path + "?id=" + reservation.id.to_s %>
-
+	Total price: <%=reservation.price%><br>
+	<% if reservation.payments.find_by(reservation_id: reservation.id) == nil %>
+		<%= link_to 'Pay Now', new_payment_path(reservation_id: reservation.id)%>
+	<%else%>
+		~Payment has been made~
+	<%end%>
 <br>
   <%= link_to "Cancell reservation", user_reservation_path(current_user, reservation), method: :delete %>
 	<%end%>
 	<br>
-	</ul>
+	</div>
 <%end%>
 
 

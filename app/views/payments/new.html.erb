@@ -1,27 +1,33 @@
-<h1>That's all for your order:</h1>
+<h1>Your booking:</h1>
 
-
-<%= form_for(@payment) do |f| %>
 
   <div class="field">
-    <%= f.label :checkin %><br>
+    <h1>check in</h1>
     <%= @reservation.checkin %><br>
   </div>
   <div class="field">
-    <%= f.label :checkout %><br>
+    <h1>check out</h1>
     <%= @reservation.checkout %><br>
   </div>
   <div class="field">
-    <%= f.hidden_field :reservation_id, value: @reservation.id %><br>
+    <h1>Total to pay:</h1>
+    <%= @reservation.price %><br>
+  </div>
+  
+
+  <%= form_tag payments_path do%>
+  <div class="field">
+    <%= hidden_field_tag(:reservation_id, @reservation.id) %><br>
+  </div>
+  <div class="field">
+  <div id="dropin"></div>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= submit_tag "Pay Now" %>
   </div>
 
 <% end %>
-<div class="field">
-  <div id="dropin"></div>
-</div>
+
 
 <script type="text/javascript">
   function setupBT() {
