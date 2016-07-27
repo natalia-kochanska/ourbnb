@@ -63,10 +63,9 @@
 <div id='horisont_stripe2'></div>
 <p>Property type: <%= @listing.property_type%> </p>
 <p>Location: <%= @listing.address%></p></p>
-	
-</div>
 <br>
-
+<p><i>Listed since <%=@listing.created_at.strftime("%b %Y")%></i></p>
+</div>
 <div class='container'><div id='horisont_stripe'></div>
 <br>
 <p>Comments:</p>

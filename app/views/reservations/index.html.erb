@@ -1,9 +1,9 @@
+<% if @reservations.find_by(:user_id == current_user.id) != nil %>
 
-
-<h1>Your upcoming reservations:</h1>
 <%@reservations.each do |reservation|%>
 	<div class="container3">
 		<% if reservation.checkin > DateTime.now%>
+			<h1>Your upcoming reservations:</h1>
 			<table   width='100%'>
 			<tr>
 				<td>Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br></td>
@@ -37,12 +37,13 @@
 <%end%>
 
 
-<h1>Your past reservations:</h1>
-<div class="container">
+
+	<%@reservations.each do |reservation|%>
+	<h1>Your past reservations:</h1>
+	<div class="container">
 	<i> Don't forget to tell others about your stay at these properties!</i>
 	<br>
 	<br>
-	<%@reservations.each do |reservation|%>
 		
 		<% if reservation.checkin < DateTime.now%>
 			<p>Location: <a href='/listings/<%=reservation.listing.id%>'><%=reservation.listing.address%></a><br>
@@ -57,6 +58,10 @@
 	<br>
 </div>
 <%= paginate @reservations%>
+
+<%else%>
+<h1>Your haven't made any reservations yet.</h1>
+<%end%>
 
 
 

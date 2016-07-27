@@ -11,13 +11,14 @@
 <br>
 <br>
 <div id='stipe-mid'></div>
-<h3>Here are my listings: </h3>
 
-<%@user.listings.each do |listing|%>
-<ul>
-	<a href='/listings/<%=listing.id%>'><%=listing.name%></ul>
-	<%end%>
-	<div id='stipe-bottom'>
-   </div>
-
-   </div>
+<% if @listings.find_by(:user_id == params[:id]) != nil %>
+  <h3>Here are my listings: </h3>
+  <%@user.listings.each do |listing|%>
+    <ul>
+  	 <a href='/listings/<%=listing.id%>'><%=listing.name%>
+    </ul>
+  <%end%>
+<%end%>
+<div id='stipe-bottom'></div>
+</div>

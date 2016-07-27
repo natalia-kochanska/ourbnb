@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		@listings = Listing.all
 	end
 
 	def edit
