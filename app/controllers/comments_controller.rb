@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
   	@comment = @listing.comments.new(comment_params)
     @comment.user_id = current_user.id
     @comment.save
-  	redirect_to request.referer 
+    redirect_to request.referer 
   end
 
   def destroy

@@ -9,15 +9,15 @@
 <br>
 <h3><%=@user.about%></h3>
 <br>
-<br>
 <div id='stipe-mid'></div>
-
-<% if @listings.find_by(:user_id == params[:id]) != nil %>
+<br>
+<% if @user.listings.find_by(:user_id == params[:id]) != nil %>
   <h3>Here are my listings: </h3>
   <%@user.listings.each do |listing|%>
     <ul>
   	 <a href='/listings/<%=listing.id%>'><%=listing.name%>
     </ul>
+    <br>
   <%end%>
 <%end%>
 <div id='stipe-bottom'></div>

@@ -1,5 +1,4 @@
 
-
 <div class="image-div container">
 
   <% if @listing.avatars?%>
@@ -56,44 +55,50 @@
   
 </table>
 
-<div class='container'><div id='horisont_stripe'></div>
-<br>
 <div class='container'>
-<p id="description"><%=@listing.description%></p>
-<div id='horisont_stripe2'></div>
-<p>Property type: <%= @listing.property_type%> </p>
-<p>Location: <%= @listing.address%></p></p>
-<br>
-<p><i>Listed since <%=@listing.created_at.strftime("%b %Y")%></i></p>
+  <div id='horisont_stripe'></div>
+  <br>
+  <div class='container'>
+    <p id="description"><%=@listing.description%></p>
+    <div id='horisont_stripe2'></div>
+    <p>Property type: <%= @listing.property_type%> </p>
+    <p>Location: <%= @listing.address%></p></p>
+    <br>
+    <p><i>Listed since <%=@listing.created_at.strftime("%b %Y")%></i></p>
+  </div>
+  <div class='container'><div id='horisont_stripe'>
 </div>
-<div class='container'><div id='horisont_stripe'></div>
 <br>
-<p>Comments:</p>
-<%@listing.comments.each do |c|%>
-  <div class='comment_container'>
-  <i>'<%= c.comment %>' by <%= c.user.name%></i><br>
-  Rating: <%= c.rating %> 
-  <% if c.user.id == current_user.id%>
-    <%= link_to " ~Delete comment~", listing_comment_path(@listing, c), method: :delete %>
-  <%end%>
 
+<p>
+  <%= link_to "Comments", "#", id: "comments-link" %>
+</p>
+<section id="comment-section">
+  <% @listing.comments.each do |c| %>
+    <div class='comment_container'>
+      <i>'<%= c.comment %>' by <%= c.user.name%></i><br>
+      Rating: <%= c.rating %> 
+      <% if c.user.id == current_user.id%>
+        <%= link_to " ~Delete comment~", listing_comment_path(@listing, c), method: :delete %>
+      <%end%>
+
+    </div>
+    <br>
+  <% end %>
+  <br>
+  <div class="container">
+    <%=form_for [@listing, Comment.new] do |f|%>
+      <%=f.label :comment %>
+      <%=f.text_area :comment, class: 'form-control'%>
+      <%=f.label :rating %>
+      <%=f.number_field :rating, min: 1, max: 5, class: "form-control" %>
+      <br>
+      <%= f.submit "Add", class: "btn btn-primary" %>
+    <% end %>
   </div>
   <br>
-<% end %>
+
+</section>
 <br>
-<div class="container">
-<%=form_for [@listing, Comment.new] do |f|%>
-  <%=f.label :comment %>
-  <%=f.text_area :comment, class: 'form-control'%>
-  <%=f.label :rating %>
-  <%=f.number_field :rating, min: 1, max: 5, class: "form-control" %>
-  <br>
-  <%= f.submit "Add", class: "btn btn-primary" %>
-<% end %>
-</div>
-<br>
-</div>
-<br>
-<!-- 
-<%= image_tag @listing.avatars[0].large.url if @listing.avatars? %> -->
+
 
