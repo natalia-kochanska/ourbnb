@@ -1,0 +1,275 @@
+/* line 5, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/comments.scss */
+#comment-section {
+  display: none;
+}
+/* line 4, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+h1 {
+  position: relative;
+  left: 30px;
+}
+
+/* line 8, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+#description {
+  font-size: 25px;
+  color: #606A6E;
+}
+
+/* line 13, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+#horisont_stripe2 {
+  height: 1px;
+  width: 200px;
+  background-color: #FCDDB8;
+}
+
+/* line 20, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+#horisont_stripe {
+  height: 2px;
+  background-color: #FCDDB8;
+}
+
+/* line 24, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+#under_title {
+  position: relative;
+  left: 200px;
+}
+
+/* line 28, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+.listing_title {
+  font-family: "Georgia";
+  position: relative;
+  left: 30px;
+  font-size: 50px;
+}
+
+/* line 34, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+.carousel-inner > .item > img {
+  max-width: 100%;
+  max-height: 100%;
+  margin: auto;
+}
+
+/* line 40, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+.carousel-control.left, .carousel-control.right {
+  background-image: none !important;
+  filter: none !important;
+}
+
+/* line 45, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+#reservation_button {
+  background: white;
+  border-color: #43C732;
+}
+
+/* line 52, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+.comment_container {
+  background-color: #F0F0F0;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 5px 5px 5px #888888;
+}
+
+/* line 59, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/listings.scss */
+.price3 {
+  font-size: 50px;
+  text-align: left;
+  font-family: "Georgia";
+}
+/* line 3, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/reservations.scss */
+.container3 {
+  position: relative;
+  left: 60px;
+  width: 600px;
+  background-color: #e6ffe6;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 7px;
+}
+/* line 1, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+.pagination_center {
+  text-align: center;
+}
+
+/* line 5, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+h3 {
+  position: relative;
+  left: 40px;
+}
+
+/* line 9, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#for {
+  line-height: 1px;
+}
+
+/* line 13, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+.price {
+  font-family: "Impact";
+  padding-left: 20px;
+  font-size: 220%;
+}
+
+/* line 18, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+.price2 {
+  padding-left: 50px;
+  font-size: 190%;
+}
+
+/* line 24, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#title {
+  font-size: 40px;
+  font-family: "Times New Roman";
+}
+
+/* line 31, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#empty {
+  width: 400px;
+}
+
+/* line 35, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+th {
+  border: 1px solid black;
+}
+
+/* line 39, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#vertical {
+  margin: 20px;
+  width: 2px;
+  height: 100px;
+  background-color: #FCDDB8;
+}
+
+/* line 46, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+.navbar-brand {
+  font-family: "Trebuchet MS";
+}
+
+/* line 50, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#t_index {
+  border: 1px;
+  text-align: left;
+  padding: 5px;
+}
+
+/* line 56, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#across {
+  height: 1px;
+  background-color: gainsboro;
+}
+
+/* line 62, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#hed1 {
+  border: none;
+}
+
+/* line 63, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#stipe-top {
+  background-color: #FCDDB8;
+  height: 5px;
+  border-radius: 20px;
+}
+
+/* line 64, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#stipe-mid {
+  background-color: #FCC179;
+  height: 7px;
+  border-radius: 20px;
+}
+
+/* line 65, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#stipe-bottom {
+  background-color: #FAA53E;
+  height: 9px;
+  border-radius: 20px;
+}
+
+/* line 68, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#login-dp {
+  min-width: 250px;
+  padding: 14px 14px 0;
+  overflow: hidden;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+/* line 74, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#login-dp .help-block {
+  font-size: 12px;
+}
+
+/* line 77, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#login-dp .bottom {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-top: 1px solid #ddd;
+  clear: both;
+  padding: 14px;
+}
+
+/* line 83, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#login-dp .social-buttons {
+  margin: 12px 0;
+}
+
+/* line 86, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#login-dp .social-buttons a {
+  width: 49%;
+}
+
+/* line 89, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+#login-dp .form-group {
+  margin-bottom: 10px;
+}
+
+/* line 92, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+.btn-fb {
+  color: #fff;
+  background-color: #3b5998;
+}
+
+/* line 96, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+.btn-fb:hover {
+  color: #fff;
+  background-color: #496ebc;
+}
+
+/* line 100, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+.btn-tw {
+  color: #fff;
+  background-color: #55acee;
+}
+
+/* line 104, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+.btn-tw:hover {
+  color: #fff;
+  background-color: #59b5fa;
+}
+
+@media (max-width: 768px) {
+  /* line 109, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+  #login-dp {
+    background-color: inherit;
+    color: #fff;
+  }
+
+  /* line 113, /Users/Natty/Desktop/ourbnb/app/assets/stylesheets/users.scss */
+  #login-dp .bottom {
+    background-color: inherit;
+    border-top: 0 none;
+  }
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
