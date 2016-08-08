@@ -31,21 +31,24 @@ class ListingsController < ApplicationController
 
   def update
     @listing.update(listing_params)
-    if @listing.save
-        redirect_to listing_path(@listing)
-      else
-        render 'edit'
-      end        
+    # if @listing.save
+      redirect_to my_listings_path(current_user)
+    # else
+    #   render 'edit'
+    # end        
   end
+
+  def delete
+    @listing = Listing.find(params[:listing_id])  
+  end 
 
   def destroy 
       @listing.destroy
-      # redirect_to listings_path #this refers to all listings..
       redirect_to my_listings_path(current_user)
   end
 
   def my_listings #'get '/users/:id/listings' do
-    @listings = current_user.listings
+    @listings = current_user.listings.order('created_at DESC')
   end
   
   def show

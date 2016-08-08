@@ -55,7 +55,13 @@ gem 'puma'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem "rspec-given"
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem "guard-rspec"
+  gem 'rb-fsevent'
 end
+
 
 group :production do
 	gem 'rails_12factor'

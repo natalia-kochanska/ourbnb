@@ -25,8 +25,8 @@
 
 
 
-	<p><a href='/listings/<%=listing.id%>/edit'>Edit</a>
-	<%= link_to "Delete", listing_path(listing), method: :delete %></p>
+	<p><%=link_to "Edit", edit_listing_path(listing), remote: true, class: "btn btn-default" %>
+	<%= link_to "Delete", listing_delete_path(listing), remote: true, class: "btn btn-danger" %></p>
 
 	<br>
 	<br> 
@@ -49,3 +49,4 @@
 	</div>
 
 <br>
+<div id="product-modal" class="modal fade"></div>

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
  
   resources :listings do
+    get "delete"
     resources :reservations
     resources :comments
   end

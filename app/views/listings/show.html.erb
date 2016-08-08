@@ -39,8 +39,8 @@
     <td rowspan="2"  ><p><span class='price3'>$<%=@listing.price%></span><i>/night</td></p></i>
     <td rowspan="2" >
     <% if @listing.user.id == current_user.id%>
-      <a href='/listings/<%=@listing.id%>/edit'>Edit</a><br>
-      <%= link_to "Delete", listing_path(@listing), method: :delete %><br>
+      <%=link_to "Edit", edit_listing_path(@listing), remote: true, class: "btn btn-default" %><br>
+      <%= link_to "Delete", listing_delete_path(@listing), remote: true, class: "btn btn-danger" %><br>
       <a href='/listings/<%=@listing.id%>/reservations/show'>View all reservations</a>
     <%else%>
       <button type="button" class="btn btn-default" id="reservation_button">
@@ -100,5 +100,6 @@
 
 </section>
 <br>
+<div id="product-modal" class="modal fade"></div>
 
 
